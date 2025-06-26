@@ -1,7 +1,7 @@
 # ESP32-S3 I²S Recorder / Player
 
 
-This project shows how to record audio from an **INMP441** MEMS microphone and play it back through a **MAX98357A** Class‑D amplifier using an **ESP32‑S3 DevKitC‑1**.
+This project—used as a test for the Goiaba platform—shows how to record audio from an **INMP441** MEMS microphone and play it back through a **MAX98357A** Class‑D amplifier using an **ESP32‑S3 DevKitC‑1**.
 A single push‑button starts/stops recording; the on‑board LED indicates status.
 
 ![Wiring Diagram](imgs/diagram.png)
