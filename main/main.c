@@ -103,5 +103,11 @@ void app_main(void) {
     mic_begin();
     spk_begin();
 
-    xTaskCreatePinnedToCore(main_task, "main_task", 4096, NULL, 4, NULL, 0);
+    xTaskCreatePinnedToCore(main_task,
+        "main_task",
+        16 * 1024,
+        NULL,
+        4,
+        NULL,
+        0);
 }
