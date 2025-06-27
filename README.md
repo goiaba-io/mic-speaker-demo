@@ -42,10 +42,12 @@ A single push‑button starts/stops recording; the on‑board LED indicates stat
 
 ## Runtime Parameters (default)
 
-* `SAMPLE_RATE` = 8000 Hz
-* `REC_SECONDS` = 4 s (→ 64 kB buffer in internal SRAM)
+* `SAMPLE_RATE` = 16000 Hz
+* `REC_SECONDS` = 10 s (→ 64 kB buffer in internal SRAM)
 
 > Using a module **with PSRAM** (e.g. ESP32‑S3‑WROOM‑1‑N8R8) you can raise both values (10 s @ 16 kHz ≈ 320 kB).
+
+In your project root, run `make menuconfig` and navigate to **Component config → ESP PSRAM → Support for external, SPI-RAM** (enable it!). There you’ll find the "PSRAM Type" setting—change it from the default Quad-SPI to **Octo-SPI**. Once enabled, save and exit; the build system will automatically configure the Octo-SPI driver so you can take full advantage of your 8 MB PSRAM for high-bandwidth audio buffering.
 
 ## Quick Start
 

@@ -2,6 +2,7 @@
 #include "driver/gpio.h"
 #include "esp_heap_caps.h"
 #include "esp_log.h"
+#include "esp_psram.h"
 #include "esp_timer.h"
 #include "freertos/FreeRTOS.h"
 #include "freertos/task.h"
@@ -50,7 +51,7 @@ static void main_task(void *arg) {
         switch (state) {
             case IDLE:
                 if (button_pressed()) {
-                    ESP_LOGI(TAG, "Recording…");
+                    ESP_LOGI(TAG, "Recording...");
                     gpio_set_level(LED_PIN, 1);
                     idx = 0;
                     t_start = esp_timer_get_time();
@@ -75,7 +76,7 @@ static void main_task(void *arg) {
                 break;
 
             case PLAY:
-                ESP_LOGI(TAG, "Playing…");
+                ESP_LOGI(TAG, "Playing...");
                 spk_play(audioBuf, BUF_SAMPLES);
                 ESP_LOGI(TAG, "Done");
                 state = IDLE;
@@ -87,6 +88,9 @@ static void main_task(void *arg) {
 }
 
 void app_main(void) {
+    size_t psram_bytes = esp_psram_get_size();
+    ESP_LOGI(TAG, "PSRAM size: %u bytes", psram_bytes);
+
     gpio_init_input_pullup(BTN_PIN);
     gpio_init_output(LED_PIN);
 

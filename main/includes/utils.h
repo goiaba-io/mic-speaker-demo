@@ -1,7 +1,7 @@
 #pragma once
 
-#define SAMPLE_RATE 8000
-#define REC_SECONDS 4
+#define SAMPLE_RATE 16000
+#define REC_SECONDS 10
 #define BUF_SAMPLES (SAMPLE_RATE * REC_SECONDS)
 
 #define BTN_PIN 14
