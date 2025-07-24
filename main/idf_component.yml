@@ -1,0 +1,5 @@
+dependencies:
+  XasWorks/esp-libopus:
+    path: ../../components/esp-libopus
+  idf:
+    version: ">=4.1.0"

@@ -10,11 +10,11 @@ void spk_begin(void) {
         .sample_rate = SAMPLE_RATE,
         .bits_per_sample = I2S_BITS_PER_SAMPLE_16BIT,
         .channel_format = I2S_CHANNEL_FMT_ONLY_LEFT,
-        .communication_format = I2S_COMM_FORMAT_I2S,
+        .communication_format = I2S_COMM_FORMAT_STAND_I2S,
         .intr_alloc_flags = ESP_INTR_FLAG_LEVEL1,
         .dma_buf_count = 8,
-        .dma_buf_len = 256,
-        .use_apll = false,
+        .dma_buf_len = 1024,
+        .use_apll = true,
         .tx_desc_auto_clear = true,
         .fixed_mclk = 0};
 
@@ -37,6 +37,6 @@ void spk_play(int16_t *src, size_t len_samples) {
             chunk * sizeof(int16_t),
             &written,
             portMAX_DELAY);
-        idx += written >> 1;
+        idx += written / sizeof(int16_t);
     }
 }
